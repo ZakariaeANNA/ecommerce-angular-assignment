@@ -1,0 +1,200 @@
+.title-page{
+    background: #F6F5FF;
+    /* opacity: 0.5; */
+    padding: 125px 0;
+}
+.title-page h2{
+    color: #101750;
+    font-size: 36px;
+    line-height: 42px;
+    font-weight: 700;
+}
+
+.demo{
+    margin-top: 74px;
+}
+
+.demo .demo__header{
+    color: #101750;
+}
+.demo .demo__header h3{
+    font-size: 24px;
+    line-height: 28px;
+    font-weight: 700;
+}
+.demo .demo__header p{
+    font-family: 'Lato', sans-serif;
+    font-size: 12px;
+    line-height: 14px;
+}
+
+.demo form{
+    background: #F8F8FD;
+    margin-top: 10px;
+    padding: 64px 31px;
+}
+
+.demo form h4{
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 21px;
+    color: #101750;
+    margin-bottom: 42px;
+}
+
+.demo form span{
+    font-family: 'Lato',sans-serif;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 0.02em;
+    color: #C1C8E1;
+}
+.demo form a{
+    text-decoration: none;
+    color: #C1C8E1;
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 0.02em;
+}
+
+.demo form input[type=text]{
+    width: 100%;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 2px solid #BFC6E0;
+    padding-bottom: 10px;
+    margin-bottom: 40px;
+
+}
+
+.demo form input::placeholder{
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 0.02em;
+    color: #C1C8E1;
+}
+input[type=checkbox]:checked {
+    accent-color: green ;
+    color: #ffffff !important;
+}
+
+.demo form label{
+    font-family: 'lato', sans-serif;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0.02em;
+    color: #8A91AB;
+    margin-bottom: 109px;
+}
+.demo .btn-shipping{
+    background: #FB2E86;
+    color: #fff;
+    padding: 14px 23px;
+    margin-top: 90px;
+}
+
+
+.demo .list__product table{
+    width: 100%;
+}
+
+.demo .table>:not(caption)>*>*{
+    vertical-align: middle;
+    padding: 15px 0;
+}
+.demo .p__image{
+    width: 98px;
+}
+
+.demo .list__product .p__name{
+    font-size: 14px;
+    line-height: 16px;
+    color: #000000;
+    margin-bottom: 6px;
+}
+.p__color, .p__size{
+    font-size: 14px;
+    line-height: 16px;
+    color: #A1A8C1;
+    margin-bottom: 6px;
+}
+
+.demo .checkout{
+    background: #F4F4FC;
+    margin-top: 42px;
+    padding: 34px 30px 32px 30px;
+}
+
+.demo .checkout p{
+    font-family: 'lato', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 22px;
+    color: #1D3178;
+    margin-bottom: 0;
+}
+.demo .checkout .checkout_line{
+    border: 2px solid #E8E6F1;
+    background-color: #E8E6F1;
+}
+
+.demo .checkout .check-out{
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    font-size: 12px;
+    font-family: 'Lato', sans-serif;
+    color: #8A91AB;
+    line-height: 14px;
+    user-select: none;
+    padding-left: 17px;
+    margin-bottom: 34px;
+}
+.demo .checkout .check-out input{
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+.demo .checkout .check-out .checkmark{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 10px;
+    height: 10px;
+    /* background: #eee; */
+    border-radius: 3px;
+}
+.demo .checkout .check-out:hover.checkmark{
+    background: #ccc;
+}
+.check-out .checkmark::after{
+    content: "";
+    position: absolute;
+    display: none;
+}
+.check-out .checkmark::after{
+    top: 40%;
+    left: 54%;
+    width: 4px;
+    height: 6px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform:translate(-50%,-50%) rotate(45deg);
+}
+.check-out input:checked ~ .checkmark{
+    background: #19D16F;
+}
+.check-out input:checked ~ .checkmark::after{
+    display: block;
+}
+.demo .checkout .btn-checkout{
+    background: #19D16F;
+    color: #fff;
+    padding: 12px 90px;
+    width: 100%;
+}

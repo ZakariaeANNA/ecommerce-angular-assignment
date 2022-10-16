@@ -1,0 +1,109 @@
+<app-header></app-header>
+<app-navigation name="Shopping Cart"></app-navigation>
+
+<div class="d-flex justify-content-center py-5" *ngIf="!isDataLoaded">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
+
+<div *ngIf="isDataLoaded">
+    <div class="container alert alert-success mt-5" role="alert" *ngIf="isCartUpdatedSuccessful">
+        Cart Updated successfully.
+    </div>
+    <div class="container alert alert-success mt-5" role="alert" *ngIf="isCartRemovedSuccessful">
+        Cart Removed successfully.
+    </div>
+    <div *ngIf="carts.length > 0">
+        <ul class="nav justify-content-center pt-2" *ngFor="let cart of carts">
+            <li class="nav-item">
+              <a class="nav-link active" href="#{{cart.id}}" data-toggle="tab" >Cart {{cart.id}}</a>
+            </li>
+        </ul>
+        <section class="shopping-cart" *ngFor="let cart of carts" class="tab-pane" [id]="cart.id">
+            <div class="container pb-5 pt-2">
+                <div class="row">
+                    <div class="col-xl-8 col-lg-8 col-md-8">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col" class="header-table">Product</th>
+                                    <th scope="col" class="header-table">Price</th>
+                                    <th scope="col" class="header-table">Quantity</th>
+                                    <th scope="col" class="header-table">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let product of cart.products">
+                                    <td class="item">
+                                        <div class="d-flex">
+                                            <div class="item__info d-flex flex-column">
+                                                <p class="item__name">{{product.title}}</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="price">{{product.discountedPrice}}$</td>
+                                    <td class="quantity buttons_added">
+                                        <input type="button" value="-" class="minus" (click)="onQuantityMinusClick(product)">
+                                        <input type="number" [value]="product.quantity" step="1" min="1" max="" name="quantity" value="1" title="Qty" class="input-text qty text" size="" pattern="" inputmode="">
+                                        <input type="button" value="+" class="plus" (click)="onQuantityAddClick(product)">
+                                    </td>
+                                    <td class="total">{{product.total}}$</td>
+                                </tr>
+                                
+                            </tbody>
+                        </table>
+                        <div class="button-group d-flex justify-content-between">
+                            <button class="btn btn-update" (click)="updateCart(cart.id,cart.products)">Update Cart</button>
+                            <button class="btn btn-clear" (click)="removeCart(cart.id)">Clear Cart</button>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4">
+                        <h4 class="text-center">Cart Totals</h4>
+                        <div class="cart__totals">
+                            <div class="d-flex justify-content-between">
+                                <p>Subtotals:</p>
+                                <p>{{cart.discountedTotal}}$</p>
+                            </div>
+                            <hr class="cart__totals__line">
+                            <div class="d-flex justify-content-between">
+                                <p>Totals:</p>
+                                <p>{{cart.total}}$</p>
+                            </div>
+                            <hr class="cart__totals__line">
+                            <div class="d-flex justify-content-between">
+                                <p>Total Products:</p>
+                                <p>{{cart.totalProducts}}</p>
+                            </div>
+                            <hr class="cart__totals__line">
+                            <div class="d-flex justify-content-between">
+                                <p>Total Quantity</p>
+                                <p>{{cart.totalQuantity}}</p>
+                            </div>
+                            <hr class="cart__totals__line">
+                            <a (click)="goToShippingInfo(cart)" class="btn btn-checkout">Proceed To Checkout</a>
+                        </div>
+                        <h4 class="text-center">Calculate Shopping</h4>
+                        <div class="calculate__shipping">
+                            <div class="d-flex flex-column text-center">
+                                <input type="text" name="" id="" placeholder="Bangladesh">
+                                <input type="text" name="" id="" placeholder="Mirpur Dhaka - 1200">
+                                <input type="text" name="" id="" placeholder="Postal Code">
+                                <button class="btn btn-shipping btn-block">Calculate Shiping</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div *ngIf="carts.length == 0">
+        <div class="d-flex justify-content-center py-5">
+            No Cart Available
+        </div>
+    </div>
+</div>
+
+<div class="text-bg-light">
+    <app-footer></app-footer>
+</div>

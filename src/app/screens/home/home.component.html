@@ -1,0 +1,127 @@
+<app-header></app-header>
+
+<div id="myCarousel" class="carousel slide h-100" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2" class=""></button>
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3" class="active"
+            aria-current="true"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item h-100" *ngFor="let product of headerProducts ; index as i" [ngClass]=" i == 0 ? 'active' : ''">
+            <img [src]="product.thumbnail" class="d-block w-100 mh-10 img-fluid opacity-75" alt="...">
+            <div class="container">
+                <div class="carousel-caption text-start">
+                    <h1>{{product.title}}</h1>
+                    <p>{{product.description}}</p>
+                    <p><a class="btn btn-lg btn-primary" (click)="goToProductItem(product)">View Details</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+<div class="container py-5">
+    <h3 class="nav justify-content-center">Leatest Products</h3>
+    <ul class="nav justify-content-center py-2">
+        <li class="nav-item">
+            <button class="nav-link btn btn-link active" aria-current="page" (click)="getLeatestProducts()">New Arrival</button>
+        </li>
+        <li class="nav-item">
+            <button class="nav-link btn btn-link" (click)="getLeatestProducts()">Best Seller</button>
+        </li>
+        <li class="nav-item">
+            <button class="nav-link btn btn-link" (click)="getLeatestProducts()">Featured</button>
+        </li>
+        <li class="nav-item">
+            <button class="nav-link btn btn-link" (click)="getLeatestProducts()">Special Offer</button>
+        </li>
+    </ul>
+    <div class="d-flex justify-content-center py-5" *ngIf="!isDataLoaded">
+        <div class="spinner-border" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 gy-3 h-50">
+        <app-product-item *ngFor="let product of leatestProducts" [product]="product" ></app-product-item>
+    </div>
+</div>
+
+<section class="home-newsletter bg-light py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="single">
+                    <h2>Get Leatest Update By Subscribe Our Newslater</h2>
+                    <div class="text-center">
+                        <button class="btn btn-secondary" routerLink="/shopgriddefault">Shop Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="container py-5">
+    <h3 class="nav justify-content-center pb-5">Trending Products</h3>
+    <div class="d-flex justify-content-center py-5" *ngIf="!isDataLoaded">
+        <div class="spinner-border" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4 gy-4 h-50">
+        <app-product-item *ngFor="let product of trendingProducts" [product]="product" ></app-product-item>
+    </div>
+</div>
+
+<div class="container">
+    <div>
+        <h1 class="div-title">What Shopex Offer!</h1>
+    </div>
+    <div class="row">
+        <div class="col-lg-3 col-md-6 md-12 g-4">
+            <div class="shopex-offer-card">
+                <img class="img-fluid mb-4" src="https://i.ibb.co/crk9tzG/free-delivery.png" alt="">
+                <h3>Free Delivery</h3>
+                <br>
+                <h6>Free delivery if you shop for at least $1000.</h6>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 md-12 g-4">
+            <div class="shopex-offer-card">
+                <img class="img-fluid mb-4" src="https://i.ibb.co/44TH3rt/cashback.png" alt="">
+                <h3>10% Cash Back</h3>
+                <br>
+                <h6>10% cashback if you shop for at least $3000.</h6>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 md-12 g-4">
+            <div class="shopex-offer-card">
+                <img class="img-fluid mb-4" src="https://i.ibb.co/KwGrS8r/premium-quality.png" alt="">
+                <h3>Quality Product</h3>
+                <br>
+                <h6>To produce the hightest quality products is our mission.</h6>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 md-12 g-4">
+            <div class="shopex-offer-card">
+                <img class="img-fluid mb-4" src="https://i.ibb.co/JkM7w5Z/24-hours-support.png" alt="">
+                <h3>24/7 Support</h3>
+                <br>
+                <h6>Dedicated support team always ready to serve you over the Phone and Live Chat.</h6>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="text-bg-light mt-5">
+    <app-footer></app-footer>
+</div>

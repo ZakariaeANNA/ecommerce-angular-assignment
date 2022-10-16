@@ -1,0 +1,65 @@
+<app-header></app-header>
+<app-navigation name="Shop Grid Default"></app-navigation>
+
+<div class="container py-5 text-center">
+    <div class="header">
+        <div class="left">
+            <h6>Ecommerce Acceories & Fashion Item</h6>
+        </div>
+        <div class="right">
+            <div class="col input-group input-group-sm">
+                <span class="input-group-text" id="inputGroup-sizing-sm">Per page</span>
+                <input type="text" (keydown)="handlePageSizeChange($event)" [(ngModel)]="pageSize" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+            </div>
+            <div class="col input-group input-group-sm">
+                <label class="input-group-text" for="inputGroupSelect01">Sort By</label>
+                <select class="form-select w-60" id="inputGroupSelect01" [(ngModel)]="sortBy" (change)="sortByFilter()">
+                  <option value="price">Price</option>
+                  <option value="discount">Discount</option>
+                  <option value="rating">Rating</option>
+                </select>
+            </div>
+            <div class="col input-group input-group-sm">
+                <label class="input-group-text" for="inputGroupSelect01">Category</label>
+                <select class="form-select w-60" id="inputGroupSelect01" [(ngModel)]="category" (change)="searchByCategory()">
+                  <option *ngFor="let category of categories" [ngValue]="category">{{category}}</option>
+                </select>
+            </div>
+            <div class="col input-group input-group-sm">
+                <label class="form-control">View</label>
+                <div class="input-group-text col-6 col-sm-3 list" routerLink="/shopgriddefault">
+                    <i class="fas fa-th"></i>
+                </div>
+                <div class="input-group-text col-6 col-sm-3 list" routerLink="/shopsidebardefault">
+                    <i class="fa-solid fa-list"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex justify-content-center py-5" *ngIf="!isDataLoaded">
+        <div class="spinner-border" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+    <div class="row row-cols-md-4 g-4" *ngIf="isDataLoaded">
+        <app-product-item 
+            *ngFor="let product of products | paginate : {
+                itemsPerPage: pageSize,
+                currentPage: page,
+                totalItems: count};" 
+            [product]="product"
+        >
+        </app-product-item>
+    </div>
+    <div class="pt-5">
+        <pagination-controls
+            previousLabel="Prev"
+            nextLabel="Next"
+            (pageChange)="handlePageChange($event)"
+        ></pagination-controls>
+    </div>
+</div>
+
+<div class="text-bg-light">
+    <app-footer></app-footer>
+</div>

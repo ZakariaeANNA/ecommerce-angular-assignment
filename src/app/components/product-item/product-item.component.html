@@ -1,0 +1,21 @@
+<div class="col">
+    <div class="card">
+        <img [src]="product.thumbnail" class="card-img-top img-height-width" alt="...">
+        <div class="card-body text-center">
+            <div class="small">
+                {{product.title}} 
+            </div>
+            <div class="row text-center">
+                <div class="col small col-6">
+                     {{discountedPrice(product.price,product.discountPercentage) | number : '1.1-1'}}$
+                </div>
+                <div class="col small col-6 text-danger text-decoration-line-through">
+                    {{product.price}}$
+                </div>
+            </div>
+        </div>
+        <div class="card-footer text-center">
+                <button type="button" class="btn btn-light btn-block w-100" (click)="goToProductItem()">View Details</button>
+        </div>
+    </div>
+</div>

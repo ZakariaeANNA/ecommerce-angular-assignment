@@ -1,0 +1,90 @@
+
+/* hero */
+.hero{
+    padding-top: 121px;
+    position: relative;
+}
+.hero .hero-thumb .hero-thumb-01{
+    position: relative;
+    width: 552px;
+    height: 409px;
+    border-radius: 6px;
+    background-color: #2B3CAB;
+    z-index: 1;
+}
+.hero .hero-thumb .hero-thumb-02{
+    position: absolute;
+    z-index: 3;
+    top: 121px;
+    margin-left: 15px;
+}
+
+.hero .hero-content{
+    margin-top: 20px;
+    margin-left: 120px;
+}
+.hero .hero-content h3{
+    font-size: 36px;
+    font-weight: 900;
+    line-height: 48px;
+    color: #151875;
+}
+.hero .hero-content p{
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 26px;
+    color: #8A8FB9;
+}
+.hero .hero-content .btn-contact{
+    margin-top: 30px;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 26px;
+    color: #fff;
+    background: #FB2E86;
+    padding: 9px 30px;
+}
+
+/* our feature */
+.our-feature .section-title{
+    color: #000000;
+}
+
+/* client-feedback */
+.client-feedback{
+    padding-top: 60px;
+    background: #FBFBFF;
+}
+.client-feedback .section-title{
+    color: #000000;
+    margin-top: 0;
+}
+
+.feedback-list{
+    margin-top: 64px;
+}
+.client-img{
+    width: 70px !important;
+}
+
+.slider-for{
+    margin-top: 25px;
+}
+.slider-for h4{
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 26px;
+    color: #151875;
+}
+.slider-for .client-work{
+    font-size: 12px;
+    line-height: 26px;
+    color: #8A8FB9;
+
+}
+.slider-for .feedback{
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 26px;
+    color: #8A8FB9;
+}

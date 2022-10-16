@@ -1,0 +1,99 @@
+<app-header></app-header>
+<app-navigation name="Shipping Cart"></app-navigation>
+
+<section class="demo">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="demo__header">
+                    <h3>Hekto Demo</h3>
+                </div>
+            </div>
+
+            <div class="col-xl-8 col-lg-8 col-md-8">
+                <form action="" class="row">
+                    <div class="col-12 d-flex justify-content-between">
+                        <h4>Contact Information</h4>
+                        <div>
+                            <span>Already have an account?</span><a href="./login.html">Log in</a>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <input type="text" placeholder="Email or mobile phone number">
+                    </div>
+                    <div class="col-12">
+                        <input type="checkbox" name="" id="check" checked>
+                        <label for="check">Keep me up to date on news and excluive offers</label>
+
+                    </div>
+
+                    <h4>Shipping address</h4>
+                    <div class="col-6">
+                        <input type="text" placeholder="First name (optional)">
+                    </div>
+                    <div class="col-6">
+                        <input type="text" placeholder="Last name">
+                    </div>
+                    <div class="col-12">
+                        <input type="text" name="" id="" placeholder="Address">
+                    </div>
+                    <div class="col-12">
+                        <input type="text" name="" id="" placeholder="Appaetnentment,suit,e.t.c (optinal)">
+                    </div>
+                    <div class="col-12">
+                        <input type="text" name="" id="" placeholder="City">
+                    </div>
+                    <div class="col-6">
+                        <input type="text" name="" id="" placeholder="Bangladesh">
+                    </div>
+                    <div class="col-6">
+                        <input type="text" name="" id="" placeholder="Postal Code">
+                    </div>
+                    <div class="col-12">
+                        <a href="shop-grid" class="btn btn-shipping">Continue Shipping</a>
+                    </div>
+                </form>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-4">
+                <div class="list__product" *ngFor="let product of cart.products">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <p class="p__name">{{product.title}}</p>
+                                    <p class="p__color">Quantity: {{product.quantity}}</p>
+                                </td>
+                                <td>{{product.discountedPrice}}$</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="checkout">
+                    <div class="d-flex justify-content-between">
+                        <p>Subtotals:</p>
+                        <p>{{cart.discountedTotal}}$</p>
+                    </div>
+                    <hr class="checkout_line">
+                    <div class="d-flex justify-content-between">
+                        <p>Totals:</p>
+                        <p>{{cart.total}}$</p>
+                    </div>
+                    <hr class="checkout_line">
+
+                    <label class="check-out">
+                        Shipping & taxes calculated at checkout
+                        <input type="checkbox" name="" checked="checked">
+                        <span class="checkmark"></span>
+                    </label>
+
+                    <a class="btn btn-checkout" (click)="goToCheckout()">Proceed To Checkout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="text-bg-light">
+    <app-footer></app-footer>
+</div>

@@ -1,0 +1,100 @@
+<app-header></app-header>
+<app-navigation name="Product Details"></app-navigation>
+
+<div class="d-flex justify-content-center py-5" *ngIf="!isDataLoaded">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
+<div class="container py-2 justify-content-center" *ngIf="isDataLoaded">
+    <div class="container mt-5 mb-5">
+        <div class="alert alert-success" role="alert" *ngIf="isAddProductToCartSuccessful">
+            Product Added to the cart successfully.
+        </div>
+        <div class="alert alert-danger" role="alert" *ngIf="!isQuantityGreaterThanZero">
+            Quantity Should Be Greater Than 0.
+        </div>
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-10">
+                <div class="card">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="images p-3">
+                                <div class="text-center p-4"> 
+                                    <img #image id="main-image" [src]="product.thumbnail" height="250" width="250" /> </div>
+                                <div class="thumbnail text-center"> 
+                                    <img (click)="changeImage(this.image)" *ngFor="let image of product.images" [src]="image" width="70"> 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="product p-4">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    Rating :
+                                    <ngb-rating [(rate)]="product.rating" [readonly]="true" [max]="5"></ngb-rating>
+                                </div>
+                                <div class="mt-4 mb-3"> <span class="text-uppercase text-muted brand">{{ product.brand }}</span>
+                                    <h5 class="text-uppercase">{{ product.title }}</h5>
+                                    <div class="price d-flex flex-row align-items-center"> 
+                                        <div class="act-price px-2">
+                                            Price : 
+                                            {{ discountedPrice(product.price,product.discountPercentage) | number : '1.2-2'}}$
+                                        </div>
+                                        <div class="px-2"> 
+                                            Original Price : 
+                                            <span class="dis-price">{{ product.price }}$</span> 
+                                        </div>
+                                        <div class="px-2"> 
+                                            Discount : 
+                                            {{ product.discountPercentage}}% OFF
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center py-1">
+                                    <label>Quantity: </label>
+                                    <div class="input-group w-auto justify-content-center align-items-center">
+                                        <div class="form-check-inline">
+                                            <button class="btn btn-outline-secondary btn-sm" (click)="onQuantityAddClick()">
+                                                <i class="fa fa-plus"></i>
+                                            </button>
+                                        </div>
+                                        <div class="form-check-inline input-group-sm">
+                                            <input (ngModel)="quantity" type="number" [min]="1" class="form-control" [value]="quantity" readonly>
+                                        </div>
+                                        <div class="form-check-inline">
+                                            <button class="btn btn-outline-secondary btn-sm" (click)="onQuantityMinusClick()" >
+                                                <i class="fa fa-minus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="about">
+                                    {{ product.description }}
+                                </p>
+                                <div class="sizes mt-5">
+                                    Stock : {{ product.stock }} Item
+                                </div>
+                                <div class="sizes mt-1">
+                                    Category : {{ product.category }}
+                                </div>
+                                <div class="cart mt-4 row align-items-center"> 
+                                    <button class="btn btn-outline-secondary mr-2 col" (click)="addToCart()" [disabled]="isStockIsEmpty">
+                                        Add to cart
+                                    </button> 
+                                    <div class="text-end col">
+                                        <i class="fa fa-heart text-muted"></i> 
+                                        <i class="fa fa-share-alt text-muted"></i>
+                                    </div> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="text-bg-light">
+    <app-footer></app-footer>
+</div>

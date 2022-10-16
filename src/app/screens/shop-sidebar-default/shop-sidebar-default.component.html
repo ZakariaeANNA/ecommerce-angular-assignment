@@ -1,0 +1,141 @@
+<app-header></app-header>
+<app-navigation name="Shop SideBar Default"></app-navigation>
+
+<div class="container py-5">
+    <div class="header">
+        <div class="left">
+            <h6>Ecommerce Acceories & Fashion Item</h6>
+        </div>
+        <div class="right row">
+            <div class="col input-group input-group-sm">
+                <span class="input-group-text" id="inputGroup-sizing-sm">Per page</span>
+                <input type="text" (keydown)="handlePageSizeChange($event)" [(ngModel)]="pageSize" class="form-control col-6 col-sm-3" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+            </div>
+            <div class="col input-group input-group-sm">
+                <label class="form-control col-md-10">View</label>
+                <div class="input-group-text col-6 col-sm-3 list" routerLink="/shopgriddefault">
+                    <i class="fas fa-th"></i>
+                </div>
+                <div class="input-group-text col-6 col-sm-3 list" routerLink="/shopsidebardefault">
+                    <i class="fa-solid fa-list"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="d-sm-flex">
+        <div class="me-sm-2">
+            <div id="filter" class="p-2 bg-light ms-md-4 ms-sm-2 border">
+                <div class="border-bottom h5">Filter By</div>
+                <div class="box border-bottom">
+                    <div class="box-label d-flex align-items-center">
+                        Price 
+                        <button class="btn ms-auto"
+                            type="button" data-bs-toggle="collapse"
+                            data-bs-target="#inner-box" 
+                            aria-expanded="false"
+                            aria-controls="inner-box"> 
+                            <span class="fas fa-plus"></span> 
+                        </button> 
+                    </div>
+                    <div id="inner-box" class="collapse show">
+                        <div class="my-1" *ngFor="let price of priceFilter"> 
+                            <label class="tick">
+                                {{price}}
+                                <input type="checkbox"
+                                    [value]="price" (change)="onPriceFilterCheckboxChange($event)" />
+                                <span class="check"></span> 
+                            </label> 
+                        </div>
+                    </div>
+                </div>
+                <div class="box border-bottom">
+                    <div class="box-label d-flex align-items-center">
+                        Categories 
+                        <button class="btn ms-auto" type="button" 
+                            data-bs-toggle="collapse" 
+                            data-bs-target="#property"
+                            aria-expanded="false" 
+                            aria-controls="property"> 
+                            <span class="fas fa-plus"></span> 
+                        </button>
+                    </div>
+                    <div id="property" class="collapse">
+                        <div class="my-1" *ngFor="let category of categories">
+                            <label class="tick">
+                                {{ category }}
+                                <input type="checkbox"
+                                    [value]="category" (change)="onCategoryFilterCheckboxChange($event)" />
+                                <span class="check"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="box border-bottom">
+                    <div class="box-label d-flex align-items-center">Rating <button
+                            class="btn ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#amenities"
+                            aria-expanded="false" aria-controls="amenities"> <span class="fas fa-plus"></span> </button>
+                    </div>
+                    <div id="amenities" class="collapse show">
+                        <div class="my-1">
+                            <label class="tick" *ngFor="let rating of ratingFilter"> 
+                                <ngb-rating [rate]="rating" [readonly]="true" [max]="5"></ngb-rating>
+                                <input 
+                                    type="checkbox"
+                                    [name]="'rating'+rating"
+                                    [value]="rating" 
+                                    (change)="onRatingFilterCheckboxChange($event)" 
+                                />
+                                <span class="check"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="box-label d-flex align-items-center">
+                        Discount 
+                        <button
+                            class="btn ms-auto" type="button" 
+                            data-bs-toggle="collapse"
+                            data-bs-target="#room-facilities" 
+                            aria-expanded="false" aria-controls="room-facilities">
+                            <span class="fas fa-plus"></span> 
+                        </button> 
+                    </div>
+                    <div id="room-facilities" class="collapse">
+                        <div class="my-1" *ngFor="let discount of discountFilter"> 
+                            <label class="tick">
+                                {{discount}} 
+                                <input type="checkbox"
+                                    [value]="discount" (change)="onDiscountFilterCheckboxChange($event)" />
+                                <span class="check"></span> 
+                            </label> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bg-white p-2 border" id="hotels">
+            <div class="hotel py-2 px-2 pb-4 border-bottom">
+                <app-product-item-sidebar 
+                    *ngFor="let product of productsFiltered | paginate : {
+                        itemsPerPage: pageSize,
+                        currentPage: page,
+                        totalItems: count};" 
+                    [product]="product"
+                ></app-product-item-sidebar>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="pt-2 text-center">
+    <pagination-controls
+        previousLabel="Prev"
+        nextLabel="Next"
+        (pageChange)="handlePageChange($event)"
+    ></pagination-controls>
+</div>
+
+<div class="text-bg-light">
+    <app-footer></app-footer>
+</div>
