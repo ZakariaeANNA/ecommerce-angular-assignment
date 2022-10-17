@@ -95,9 +95,9 @@ export class ShopSidebarDefaultComponent implements OnInit,OnDestroy {
     if(event.target.value == "less than 10%")
       this.productsFiltered = this.products
             .filter(product => (product.discountPercentage < 10));
-    else if(event.target.value == "20% - 30%")
+    else if(event.target.value == "10% - 30%")
       this.productsFiltered = this.products
-            .filter(product => (product.discountPercentage > 20 && product.discountPercentage < 30));
+            .filter(product => (product.discountPercentage > 10 && product.discountPercentage < 30));
     else if(event.target.value == "30% - 45%")
       this.productsFiltered = this.products
             .filter(product => (product.discountPercentage > 30 && product.discountPercentage < 45));
@@ -110,22 +110,22 @@ export class ShopSidebarDefaultComponent implements OnInit,OnDestroy {
   }
 
   onPriceFilterCheckboxChange(event: any) {
-    if(event.target.value == "less than 2000")
+    if(event.target.value == "less than 20")
       this.productsFiltered = this.products
             .filter(product => (product.price < 20));
-    else if(event.target.value == "2000 - 3000")
+    else if(event.target.value == "20 - 30")
       this.productsFiltered = this.products
             .filter(product => (product.price > 20 && product.price < 30));
-    else if(event.target.value == "3000 - 4500")
+    else if(event.target.value == "30 - 45")
       this.productsFiltered = this.products
             .filter(product => (product.price > 30 && product.price < 45));
-    else if(event.target.value == "4500 - 8000")
+    else if(event.target.value == "45 - 80")
       this.productsFiltered = this.products
             .filter(product => (product.price > 45 && product.price < 80));
-    else if(event.target.value == "8000 - 10000")
+    else if(event.target.value == "80 - 100")
       this.productsFiltered = this.products
             .filter(product => (product.price > 80 && product.price < 100));
-    else if(event.target.value == "10000 and Above")
+    else if(event.target.value == "100 and Above")
       this.productsFiltered = this.products
             .filter(product => (product.price > 100));
   }
